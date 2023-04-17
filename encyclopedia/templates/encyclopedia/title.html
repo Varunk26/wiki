@@ -1,0 +1,32 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+
+    {% if exists %}
+        {{ name }}
+        
+    {% else %}
+        ERROR: REQUESTED PAGE NOT FOUND
+    {% endif %}
+    
+{% endblock %}
+
+{% block body %}
+
+    {% if exists %}
+        <div>
+            <br></br>
+            <li><a href="{% url 'encyclopedia:editpage' name=name %}">Edit {{ name }}</a></li>
+        </div>
+        <div>
+            {{ content|safe }}
+        </div>
+    {% else %}
+    <div>
+        <h1>Content does not exist</h1>
+    </div>
+
+    {% endif %}
+
+
+{% endblock %}
